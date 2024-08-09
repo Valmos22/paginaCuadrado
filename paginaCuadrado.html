@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="es-CO">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="generator" content="vtex.render-server@8.172.3">
+    <meta charset="utf-8">
+    <meta data-react-helmet="true" name="country" content="COL">
+    <meta data-react-helmet="true" name="language" content="es-CO">
+    <meta data-react-helmet="true" name="currency" content="COP">
+    <meta data-react-helmet="true" name="robots" content="index, follow">
+
+    <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+
+    <link rel="stylesheet" href="carouselCard.css">
+
+    <style>
+        .carouselUno {
+            display: flex;
+            overflow-x: auto;
+            scroll-snap-type: x mandatory;
+            scroll-behavior: smooth;
+        }
+
+        .carousel-itemUno {
+            min-width: 100%;
+            scroll-snap-align: center;
+        }
+
+        .carousel-video {
+            width: 100%;
+            height: auto;
+        }
+
+        .boton-flotante {
+            position: absolute;
+            top: 640px;
+            left: 45%;
+            z-index: 9999;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background-color: #536158;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+            animation: breathe 2s ease-in-out infinite;
+            }
+
+            /*Estilos solo al icono whatsapp*/
+            .boton-flotante i {
+            color: #fff;
+            font-size: 24px;
+            animation: beat 2s ease-in-out infinite;
+            text-decoration: none;
+            }
+
+            /*Estilos con animation contorno respirando*/
+            @keyframes breathe {
+            0% {
+                box-shadow: 0 0 0 0 rgba(49 53 50 / 50%);
+            }
+            70% {
+                box-shadow: 0 0 0 15px rgba(37, 211, 102, 0);
+            }
+            100% {
+                box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
+            }
+            }
+
+            /*Estilos de animacion del icono latiendo*/
+            @keyframes beat {
+            0% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.2);
+            }
+            100% {
+                transform: scale(1);
+            }
+            }
+
+        @media (max-width: 768px) {
+            .carousel-video {
+                height: 100vh;
+                width: auto;
+            }
+        }
+
+        @media (min-width: 769px) {
+            .carousel-video {
+                height: auto;
+                width: 100%;
+            }
+        }
+    </style>
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Cuadrado</title>
+    </head>
+    <body>
+        <div class="carouselUno">
+            <div class="carousel-itemUno">
+                <video class="carousel-video" autoplay src="video1.mp4"
+                    controls></video>
+            </div>
+            <div class="carousel-itemUno">
+                <video class="carousel-video" src="video2.mp4" controls></video>
+            </div>
+            <div class="carousel-itemUno">
+                <video class="carousel-video" src="video3.mp4" controls></video>
+            </div>
+        </div>
+
+        <div class="boton-flotante">
+            <i class="bi bi-arrow-down-circle-fill"></i>
+        </div>
+
+           <!-- <br><br><br> -->
+         <div class="hugo">
+            <div class="carousel">
+                <div class="carousel__item carousel__item--left">
+                  <img src="https://images.unsplash.com/photo-1530281700549-e82e7bf110d6?q=80&w=3388&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="dog">
+                  <div class="carousel__text">
+                    <h3>Cute Puppy</h3>
+                    <p>Isn't it cute?!</p>
+                  </div>
+                </div>
+                <div class="carousel__item carousel__item--main">
+                  <img src="https://images.unsplash.com/photo-1552053831-71594a27632d?q=80&w=3362&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="dog">
+                  <div class="carousel__text">
+                    <h3>Cute Puppy</h3>
+                    <p>Isn't it cute?!</p>
+                  </div>
+                </div>
+                <div class="carousel__item carousel__item--right">
+                  <img src="https://images.unsplash.com/photo-1537151625747-768eb6cf92b2?q=80&w=2568&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="dog">
+                  <div class="carousel__text">
+                    <h3>Cute Puppy</h3>
+                    <p>Isn't it cute?!</p>
+                  </div>
+                </div>
+                <div class="carousel__item">
+                  <img src="https://images.unsplash.com/photo-1588943211346-0908a1fb0b01?q=80&w=3024&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="dog">
+                  <div class="carousel__text">
+                    <h3>Cute Puppy</h3>
+                    <p>Isn't it cute?!</p>
+                  </div>
+                </div>
+                <div class="carousel__item">
+                  <img src="https://images.unsplash.com/photo-1596492784531-6e6eb5ea9993?q=80&w=3387&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="dog">
+                  <div class="carousel__text">
+                    <h3>Cute Puppy</h3>
+                    <p>Isn't it cute?!</p>
+                  </div>
+                </div>
+                <div class="carousel__item">
+                  <img src="https://images.unsplash.com/photo-1510771463146-e89e6e86560e?q=80&w=1362&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="dog">
+                  <div class="carousel__text">
+                    <h3>Cute Puppy</h3>
+                    <p>Isn't it cute?!</p>
+                  </div>
+                </div>
+                <div class="carousel__btns">
+                  <button class="carousel__btn" id="leftBtn"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="currentColor" fill-rule="evenodd" d="m15 4l2 2l-6 6l6 6l-2 2l-8-8z"/></svg></button>
+                  <button class="carousel__btn" id="rightBtn"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="currentColor" fill-rule="evenodd" d="m9.005 4l8 8l-8 8L7 18l6.005-6L7 6z"/></svg></button>
+                </div>
+            </div>
+         </div>
+
+        <script>
+            document.addEventListener('DOMContentLoaded', () => {
+                const videos = document.querySelectorAll('.carousel-video');
+                let currentIndex = 0;
+
+                function playNextVideo() {
+                    if (currentIndex < videos.length - 1) {
+                        currentIndex++;
+                    } else {
+                        currentIndex = 0; // Reinicia al primer video si está al final
+                    }
+
+                    // Mueve el carrusel al siguiente video
+                    const carousel = document.querySelector('.carousel-1');
+                    carousel.scrollTo({
+                        left: carousel.offsetWidth * currentIndex,
+                        behavior: 'smooth'
+                    });
+
+                    // Reproduce el siguiente video
+                    videos[currentIndex].play();
+                }
+
+                videos.forEach((video, index) => {
+                    video.addEventListener('ended', playNextVideo);
+
+                    // Si el carrusel no empieza automáticamente con el primer video en reproducción
+                    if (index === 0) {
+                        video.play();
+                    }
+                });
+            });
+        </script>
+        <script type="module" src="carouselCard.js"></script>
+    </body>
+</html>

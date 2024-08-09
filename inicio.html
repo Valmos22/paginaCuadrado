@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <style id="cn_style" type="text/css">
+            @keyframes cn_fadeIn {
+                from {
+                    opacity: 0;
+                }
+
+                to {
+                    opacity: 1;
+                }
+            }
+
+            @keyframes cn_fadeInLeft {
+                from {
+                    opacity: 0;
+                    transform: translate3d(-100%, 0, 0);
+                }
+
+                to {
+                    opacity: 1;
+                    transform: none;
+                }
+            }
+
+            @keyframes cn_fadeInDown {
+                from {
+                    opacity: 0;
+                    transform: translate3d(0, -100%, 0);
+                }
+
+                to {
+                    opacity: 1;
+                    transform: none;
+                }
+            }
+
+            @keyframes cn_fadeInRight {
+                from {
+                    opacity: 0;
+                    transform: translate3d(100%, 0, 0);
+                }
+
+                to {
+                    opacity: 1;
+                    transform: none;
+                }
+            }
+
+            @keyframes cn_fadeInUp {
+                from {
+                    opacity: 0;
+                    transform: translate3d(0, 100%, 0);
+                }
+
+                to {
+                    opacity: 1;
+                    transform: none;
+                }
+            }
+
+            @keyframes cn_zoomIn {
+                from {
+                    opacity: 0;
+                    transform: scale3d(0.3, 0.3, 0.3);
+                }
+
+                50% {
+                    opacity: 1;
+                }
+            }
+
+            @keyframes cn_bounceIn {
+
+                from,
+                20%,
+                40%,
+                60%,
+                80%,
+                to {
+                    animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+                }
+
+                0% {
+                    opacity: 0;
+                    transform: scale3d(0.3, 0.3, 0.3);
+                }
+
+                20% {
+                    transform: scale3d(1.1, 1.1, 1.1);
+                }
+
+                40% {
+                    transform: scale3d(0.9, 0.9, 0.9);
+                }
+
+                60% {
+                    opacity: 1;
+                    transform: scale3d(1.03, 1.03, 1.03);
+                }
+
+                80% {
+                    transform: scale3d(0.97, 0.97, 0.97);
+                }
+
+                to {
+                    opacity: 1;
+                    transform: scale3d(1, 1, 1);
+                }
+            }
+
+            @keyframes cn_fadeOut {
+                from {
+                    opacity: 1;
+                }
+
+                to {
+                    opacity: 0;
+                }
+            }
+
+            @keyframes cn_fadeOutLeft {
+                from {
+                    opacity: 1;
+                }
+
+                to {
+                    opacity: 0;
+                    transform: translate3d(-100%, 0, 0);
+                }
+            }
+
+            @keyframes cn_fadeOutDown {
+                from {
+                    opacity: 1;
+                }
+
+                to {
+                    opacity: 0;
+                    transform: translate3d(0, 100%, 0);
+                }
+            }
+
+            @keyframes cn_fadeOutRight {
+                from {
+                    opacity: 1;
+                }
+
+                to {
+                    opacity: 0;
+                    transform: translate3d(100%, 0, 0);
+                }
+            }
+
+            @keyframes cn_fadeOutUp {
+                from {
+                    opacity: 1;
+                }
+
+                to {
+                    opacity: 0;
+                    transform: translate3d(0, -100%, 0);
+                }
+            }
+
+            @keyframes cn_zoomOut {
+                from {
+                    opacity: 1;
+                }
+
+                50% {
+                    opacity: 0;
+                    transform: scale3d(0.3, 0.3, 0.3);
+                }
+
+                to {
+                    opacity: 0;
+                }
+            }
+
+            @keyframes cn_bounceOut {
+                20% {
+                    transform: scale3d(0.9, 0.9, 0.9);
+                }
+
+                50%,
+                55% {
+                    opacity: 1;
+                    transform: scale3d(1.1, 1.1, 1.1);
+                }
+
+                to {
+                    opacity: 0;
+                    transform: scale3d(0.3, 0.3, 0.3);
+                }
+            }
+
+            .cn__slider {
+                position: relative;
+                overflow: hidden;
+            }
+
+            .cn__frame {
+                width: 100%;
+                position: relative;
+                overflow: hidden;
+                white-space: nowrap;
+            }
+
+            ul.cn__slides.js_slides {
+                display: block;
+                margin: 0;
+                padding: 0;
+                font-size: 0;
+                line-height: 0;
+            }
+
+            li.cn__li {
+                position: relative;
+                display: inline-block;
+                overflow: hidden;
+                font-size: 14px;
+                line-height: 14px;
+                vertical-align: top;
+            }
+
+            .cn__prev,
+            .cn__next {
+                position: absolute;
+                top: 50%;
+                margin-top: -25px;
+                display: block;
+                cursor: pointer;
+            }
+
+            .cn__next {
+                right: 0;
+            }
+
+            .cn__prev {
+                left: 0;
+            }
+
+            .cn__next svg,
+            .cn__prev svg {
+                width: 25px;
+            }
+
+            [data-cn-required-message-for]:not(.visible) {
+                display: none;
+            }
+
+            .cn_product {
+                float: left;
+            }
+
+            .cn_rating {
+                --star-size: 20px;
+                --star-color: #fc0;
+                --star-background: #ccc;
+                --percent: calc(var(--rating) / 5 * 100%);
+                font-size: var(--star-size);
+                font-family: Times;
+                line-height: 1;
+            }
+
+            .cn_rating::before {
+                content: '★★★★★';
+                letter-spacing: 3px;
+                background: linear-gradient(90deg, var(--star-color) var(--percent), var(--star-background) var(--percent));
+                -webkit-background-clip: text;
+                background-clip: text;
+                -webkit-text-fill-color: transparent;
+            }
+
+            .cn_countdown {
+                line-height: 3em;
+            }
+
+            .cn_countdown .cn_numbers {
+                text-align: center;
+                display: inline-block;
+                font-weight: bold;
+                padding: 0 10px;
+            }
+
+            .cn_countdown .cn_time-labels {
+                font-weight: bold;
+                text-align: center;
+            }
+        </style>
+        <style id="cn_style_f9601f49-229f-4378-b31d-031a76803427" type="text/css">
+            .cn_content.id-f9601f49-229f-4378-b31d-031a76803427 .cn_button_link p {
+                margin: 0;
+                line-height: 1em;
+            }
+        </style>
+    </head>
+
+    <body>
+        <div class="cn_content_backdrop-f9601f49-229f-4378-b31d-031a76803427"
+            style="background-color: rgb(255, 255, 255); animation-name: cn_fadeIn; animation-duration: 500ms; display: flex; overflow: auto; justify-content: center; align-items: center; position: fixed; inset: 0px; border-width: 0px; border-style: solid; border-color: transparent; z-index: 4000; backdrop-filter: blur(0px) saturate(1) brightness(1) contrast(1);">
+            <div class="cn_content cn_content_type_full-screen id-f9601f49-229f-4378-b31d-031a76803427"
+                style="max-width: 100%; width: 600px; margin: auto;">
+                <style type="text/css">
+                    @media (max-width: 768px) {
+                        .id-f9601f49-229f-4378-b31d-031a76803427 .cn_cell {
+                            width: 100% !important;
+                            max-width: 100% !important;
+                        }
+
+                        .id-f9601f49-229f-4378-b31d-031a76803427 .cn_block {
+                            display: block !important;
+                        }
+                    }
+                </style>
+                <div class="cn_section id-dd1d69b6-6f1b-4da5-a8f9-93201b97f333" style="width: 100%;">
+                    <div class="cn_block id-dbe08ecb-8840-4836-9568-71124ef87332" style="display: flex;">
+                        <div class="cn_cell id-dca7626d-fb16-46ee-a2e6-043210e67ec5" style="width: 100%;">
+                            <div class="cn_element cn_video id-f0c02e8d-d266-42e7-80ab-b91a39d558dc"
+                                style="background-color: rgba(0, 0, 0, 1);padding-top: 0px;padding-right: 0px;padding-bottom: 0px;padding-left: 0px;">
+                                <div style="position: relative; padding-bottom: 56.25%; height: 0"><iframe
+                                        style="position: absolute; top: 0; left: 0; width: 100%; height: 100%"
+                                        src="https://www.youtube.com/embed/tWUj7aKOX-Q" frameborder="0"
+                                        allow="autoplay"></iframe></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="cn_block id-bca0ebc2-a433-466c-8506-bde433c0bae6" style="display: flex;">
+                        <div class="cn_cell id-fbe46084-5e50-4581-96c2-4d9871c19cc5" style="width: 100%;">
+                            <div class="cn_element cn_html id-ae711047-04df-41e7-9180-8e6b3752fde7"
+                                style="padding-top: 20px;padding-right: 10px;padding-bottom: 20px;padding-left: 10px;">
+                                <meta charset="UTF-8">
+                                <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                                <title>Mi Página con Botón</title>
+                                <style>
+                                    body {
+                                        font-family: Arial, sans-serif;
+                                        display: flex;
+                                        justify-content: center;
+                                        align-items: center;
+                                        height: 100vh;
+                                        margin: 0;
+                                        background-color: #f0f0f0;
+                                    }
+
+                                    .button-container {
+                                        text-align: center;
+                                    }
+
+                                    button {
+                                        background-color: #007bff;
+                                        border: none;
+                                        color: white;
+                                        padding: 15px 32px;
+                                        text-align: center;
+                                        text-decoration: none;
+                                        display: inline-block;
+                                        font-size: 16px;
+                                        margin: 4px 2px;
+                                        cursor: pointer;
+                                        border-radius: 5px;
+                                        transition: background-color 0.3s;
+                                    }
+
+                                    button:hover {
+                                        background-color: #0056b3;
+                                    }
+                                </style>
+                                <div class="button-container"> <button onclick="alert('¡Haz hecho clic en el botón!')">Haz
+                                        clic en mí</button> </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="cn_block id-aea4dd06-022c-49cb-a3a3-2c9e1d0cb096"
+                        style="display: flex;background-color: rgba(255, 255, 255, 0.97);">
+                        <div class="cn_cell id-083a8770-37e0-4404-9ce9-6f4f017e1832" style="width: 100%;">
+                            <div class="cn_element cn_text id-31724836-a309-4aeb-b081-c737c539e0f3"
+                                style="padding-top: 20px;padding-right: 10px;padding-bottom: 20px;padding-left: 10px; word-wrap: break-word;">
+                                <p style="text-align: center;">Introduce tu
+                                    propio contenido en este <strong>elemento de
+                                        Texto</strong></p>
+                            </div>
+                            <div class="cn_element cn_image id-4adf28fa-32ec-4b7f-b0d8-f6e143fd7e79"
+                                style="padding-top: 0px;padding-right: 0px;padding-bottom: 0px;padding-left: 0px;text-align: center;">
+                                <img src="https://quest.vtexassets.com/assets/vtex.file-manager-graphql/images/235157f7-7cc2-48c0-879f-2e99814f8447___0cbecf775b0836d507f25eb937549bc5.jpg"
+                                    alt title style="max-width: 100%"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="cn_content_close-f9601f49-229f-4378-b31d-031a76803427">
+                <a href="#__cn_close_content"
+                    style="width: 16px; height: 16px; position: absolute; top: 0px; right: 0px; padding: 8px; box-sizing: content-box; fill: rgba(119, 119, 119, 1); border: 0px solid rgba(119, 119, 119, 1); border-radius: 0px; background-color: transparent">
+                    <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px"
+                        y="0px" width="16px" height="16px" viewBox="0 0 357 357" xml:space="preserve">
+                        <polygon
+                            points="357,35.7 321.3,0 178.5,142.8 35.7,0 0,35.7 142.8,178.5 0,321.3 35.7,357 178.5,214.2 321.3,357 357,321.3 214.2,178.5">
+                        </polygon>
+                    </svg>
+                </a>
+            </div>
+        </div>
+    </body>
+
+</html>
